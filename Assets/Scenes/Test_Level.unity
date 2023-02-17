@@ -199,11 +199,6 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: 50}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0, y: 1}
---- !u!4 &228633726 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2346949785483859290, guid: 51fe2e06ce79bb84b8967a24cfa386e2, type: 3}
-  m_PrefabInstance: {fileID: 2346949785272023332}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237351151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7637,6 +7632,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &566328982 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2817962724216130669, guid: 51fe2e06ce79bb84b8967a24cfa386e2, type: 3}
+  m_PrefabInstance: {fileID: 2346949785272023332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &638785989
 GameObject:
   m_ObjectHideFlags: 0
@@ -8181,11 +8181,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &758097598 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2005720000515687698, guid: 33154b5cbe6973c45818a121a34d167c, type: 3}
-  m_PrefabInstance: {fileID: 2005720000027812780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1055438551
 GameObject:
   m_ObjectHideFlags: 0
@@ -8377,6 +8372,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1664118707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 384590273960157222, guid: 33154b5cbe6973c45818a121a34d167c, type: 3}
+  m_PrefabInstance: {fileID: 2005720000027812780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1664727309
 GameObject:
   m_ObjectHideFlags: 0
@@ -9436,9 +9436,9 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
   m_UseDelaunayMesh: 0
---- !u!4 &2124871482 stripped
+--- !u!4 &2114488272 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2005720001329960086, guid: 33154b5cbe6973c45818a121a34d167c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 384590275260871074, guid: 33154b5cbe6973c45818a121a34d167c, type: 3}
   m_PrefabInstance: {fileID: 2005720000027812780}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2005720000027812780
@@ -9556,9 +9556,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2346949785483859291, guid: 51fe2e06ce79bb84b8967a24cfa386e2, type: 3}
+      propertyPath: knockBackForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346949785483859291, guid: 51fe2e06ce79bb84b8967a24cfa386e2, type: 3}
+      propertyPath: knockBackLength
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2346949785483859294, guid: 51fe2e06ce79bb84b8967a24cfa386e2, type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817962724216130668, guid: 51fe2e06ce79bb84b8967a24cfa386e2, type: 3}
+      propertyPath: jumpForce
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -9622,15 +9634,27 @@ PrefabInstance:
     - target: {fileID: 3895501257806390421, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 228633726}
+      objectReference: {fileID: 0}
     - target: {fileID: 3895501257806390421, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}
       propertyPath: farBackground
       value: 
-      objectReference: {fileID: 2124871482}
+      objectReference: {fileID: 0}
     - target: {fileID: 3895501257806390421, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}
       propertyPath: middleBackground
       value: 
-      objectReference: {fileID: 758097598}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109760508160652668, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 566328982}
+    - target: {fileID: 7109760508160652668, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}
+      propertyPath: farBackground
+      value: 
+      objectReference: {fileID: 1664118707}
+    - target: {fileID: 7109760508160652668, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}
+      propertyPath: middleBackground
+      value: 
+      objectReference: {fileID: 2114488272}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 60dab5b488eb73746ac1c9b0d20945cb, type: 3}

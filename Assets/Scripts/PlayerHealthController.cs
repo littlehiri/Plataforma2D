@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    //Variables para controlar la vida actual del jugador y el maximo de vida que puede tener
+    //Variables para controlar la vida actual del jugador y el máximo de vida que puede tener
     public int currentHealth, maxHealth;
-    //Variables para el contador de tiempo e invencibilidad
+
+    //Variables para el contador de tiempo de invencibilidad
     public float invincibleLength; //Valor que tendrá el contador de tiempo
     private float invincibleCounter; //Contador de tiempo
 
+    //Referencia del SpriteRenderer del jugador
     private SpriteRenderer theSR;
-    // Start is called before the first frame update
+
+    //Hacemos el Singleton de este script
     public static PlayerHealthController sharedInstance;
 
     private void Awake()
@@ -21,8 +24,11 @@ public class PlayerHealthController : MonoBehaviour
             sharedInstance = this;
         }
     }
+
+    // Start is called before the first frame update
     void Start()
     {
+        //Inicializamos la vida del jugador
         currentHealth = maxHealth;
         //Obtenemos el SpriteRenderer del jugador
         theSR = GetComponent<SpriteRenderer>();
@@ -31,22 +37,33 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Comprobamos si el contador de invencibilidad esta lleno
+        //Comprobamos si el contador de invencibilidad aún no está vacío
         if (invincibleCounter > 0)
         {
-            //Le restamos 1 cada segundo a ese contador independientemente del dispositivo
-            
+            //Le restamos 1 cada segundo a ese contador independientemente del dispositivo que ejecute el juego
+            invincibleCounter -= Time.deltaTime;
+
+            //Cuando el contador haya decrecido hasta 0
+            if (invincibleCounter <= 0)
+            {
+                //Cambiamos el color del sprite, mantenemos el RGB y ponemos la opacidad a tope
+                theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 1f);
+            }
         }
     }
 
-    //Metodo para manejar el daño
+    //Método para manejar el daño
     public void DealWithDamage()
     {
         //Restamos 1 de la vida que tengamos
-        currentHealth--; //Currenthealth -=1, currenthealth = currenthealth - 1;
+        currentHealth--; //currentHealth -= 1; currentHealth = currentHealth - 1;
 
-        //Si la vida está en 0 o por debajo (para asegurarnos de tener en cuenta solo valores
-        if (currentHealth <=0)
+        
+        
+        
+        
+        //Si la vida está en 0 o por debajo (para asegurarnos de tener en cuenta solo valores positivos)
+        if (currentHealth <= 0)
         {
             //Hacemos cero la vida si fuera negativa
             currentHealth = 0;
@@ -54,14 +71,20 @@ public class PlayerHealthController : MonoBehaviour
             //Hacemos desaparecer de momento al jugador
             gameObject.SetActive(false);
         }
-        //Si el jugador recibe daño pero no ha muerto
+        //Si el jugador ha recibido daño pero no ha muerto
         else
         {
-            //inicializamos el contador de invencibilidad
+            PlayerController.sharedInstance.anim.SetTrigger("hurt");
+            Debug.Log("Hola");
+            //Inicializamos el contador de invencibilidad
             invincibleCounter = invincibleLength;
-            //Cambiamos el color del sprite, mantenemos el RGB y ponemos la opacidad a la
-            theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 5f);
+            //Cambiamos el color del sprite, mantenemos el RGB y ponemos la opacidad a la mitad
+            theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, .5f);
+
+            //Llamamos al método que hace que el jugador realice el KnockBack
+            PlayerController.sharedInstance.KnockBack();
         }
+        
 
         //Actualizamos la UI
         UICotroller.sharedInstance.UpdateHealthDisplay();
